@@ -8,47 +8,58 @@ import useStyles from './style';
 import { createPost, updatePost } from '../../actions/posts';
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({author: '', title: '', content: '', tags: '', selectedFile: ''});
+  const [postData, setPostData] = useState({author: '', title: '', content: '', tags: '', urlImg: ''});
+  const [savePost, setSavePost] = useState(false);
   const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
   const [image, setImage] = useState(null);
-  
-  const handleChange = (event) => {
-    if (event.target.files[0]) {
-      setImage(event.target.files[0]);
-    }
-  };
-
-  const handleUpload = () => {
-    const pathReference = storage.ref(`images/projet/${postData.title}`);
-      pathReference.put(image).then(() => {
-        console.log("image enregistrée avec succès")
-      }).catch(function(error) {
-      console.log(error);
-    });
-  }
 
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
+  useEffect(() => {
+    if (savePost) {
+      dispatch(createPost(postData));
+      console.log("post datas enregistés sur mongoDB");
+      clear();
+      setSavePost(false);
+    }
+  }, [savePost]);
+
   const clear = () => {
     setCurrentId(0);
-    setPostData({ author: '', title: '', content: '', tags: '', selectedFile: '' });
+    setPostData({ author: '', title: '', content: '', tags: '', urlImg: '' });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      handleUpload()
-      dispatch(createPost(postData));
-      clear();
+      handleUploadImg();
     } else {
       dispatch(updatePost(currentId, postData));
       clear();
     }
+  };
+
+  const handleChange = (event) => {
+    if (event.target.files[0]) {
+      setImage(event.target.files[0]);
+    }
+  };
+
+  const handleUploadImg = () => {
+    const pathReference = storage.ref(`images/projects/${postData.title}`);
+      pathReference.put(image).then( async () => {
+        console.log("image enregistrée avec succès");
+        const url = await pathReference.getDownloadURL();
+        setPostData({ ...postData, urlImg: url });
+        setSavePost(true);
+      }).catch(function(error) {
+      console.log(error);
+    });
   };
 
   return (
