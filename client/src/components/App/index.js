@@ -12,7 +12,7 @@ import favicon from '../../images/favicon.png';
 import useStyles from './style';
 
 const App = () => {
-  const [currentId, setCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
 

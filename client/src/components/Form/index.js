@@ -3,9 +3,12 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { storage } from "../../firebase";
 
+//Actions
+import { createPost, updatePost } from '../../actions/posts';
+
 //Style
 import useStyles from './style';
-import { createPost, updatePost } from '../../actions/posts';
+
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({author: '', title: '', content: '', tags: '', urlImg: ''});
@@ -36,11 +39,11 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentId === 0) {
-      handleUploadImg();
-    } else {
+    if (currentId) {
       dispatch(updatePost(currentId, postData));
       clear();
+    } else {
+      handleUploadImg();
     }
   };
 
