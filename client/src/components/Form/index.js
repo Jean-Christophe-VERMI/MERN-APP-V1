@@ -23,28 +23,29 @@ const Form = ({ currentId, setCurrentId }) => {
   }, [post]);
 
   useEffect(() => {
-    if (savePost) {
+    if (savePost && currentId === null) {
       dispatch(createPost(postData));
-      console.log("post datas enregistés sur mongoDB");
+      console.log("nouveau projet enregistré sur mongoDB");
       clear();
-      setSavePost(false);
     }
+
+    if (savePost && currentId) {
+      dispatch(updatePost(currentId, postData));
+      console.log("projet mis à jour sur mongoDB");
+      clear();
+    }
+
+    setSavePost(false);
   }, [savePost]);
 
   const clear = () => {
-    setCurrentId(0);
+    setCurrentId(null);
     setPostData({ author: '', title: '', content: '', tags: '', urlImg: '' });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (currentId) {
-      dispatch(updatePost(currentId, postData));
-      clear();
-    } else {
-      handleUploadImg();
-    }
+    handleUploadImg();
   };
 
   const handleChange = (event) => {
@@ -68,7 +69,7 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">Ajouter un projet web</Typography>
+        <Typography variant="h6">{currentId ? 'Editer' : 'Créer' } un projet web</Typography>
         <TextField name="author" variant="outlined" label="Author" fullWidth value={postData.author} onChange={(e) => setPostData({ ...postData, author: e.target.value })} />
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
         <TextField name="content" variant="outlined" label="Content" fullWidth value={postData.content} onChange={(e) => setPostData({ ...postData, content: e.target.value })} />
