@@ -7,7 +7,7 @@ import moment from 'moment';
 import useStyles from './style';
 import { useDispatch } from 'react-redux';
 
-import { deletePost } from '../../../actions/posts';
+import { likePost, deletePost } from '../../../actions/posts';
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -38,7 +38,7 @@ const Post = ({ post, setCurrentId }) => {
         <Button 
           size="small" 
           color="primary" 
-          onClick={() => {}}>
+          onClick={() => dispatch(likePost(post._id))}>
           <ThumbUpAltIcon fontSize="small" />
           J'aime
           {post.likeCount}
