@@ -6,6 +6,10 @@ const postSchema = mongoose.Schema({
   author: String,
   tags: [String],
   urlImg: String,
+  likeCount: {
+    type: Number,
+    default: 0,
+  },
   createdAt: {
     type: Date,
     default: new Date()
