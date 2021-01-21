@@ -11,12 +11,12 @@ const Navbar = () => {
   const user = null;
 
   return (
-    <AppBar className={classes.appBar} position="sticky" color="inherit" >
-      <div className={classes.appBar}>
+    <AppBar className={classes.appBar} position="static" color="inherit" >
+      <div className={classes.brandContainer}>
         <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Portfolio 2020</Typography>
         <img className={classes.image} src={favicon} alt="favicon" height="60" />
       </div>
-      <Toolbar className={classes.Toolbar}>
+      <Toolbar className={classes.toolbar}>
         {user ? (
           <div className={classes.profile}>
             <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
