@@ -1,45 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
-import { getPosts } from '../../actions/posts.js';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Container} from '@material-ui/core';
 
 // Components
-import Posts from '../Posts';
-import Form from '../Form';
+import Navbar from '../Navbar';
+import Home from '../Home';
+import Auth from '../Auth';
 
-//Styles
-import favicon from '../../images/favicon.png';
-import useStyles from './style';
 
-const App = () => {
-  const [currentId, setCurrentId] = useState(null);
-  const classes = useStyles();
-  const dispatch = useDispatch();
-
-  useEffect(()=> {
-    dispatch(getPosts());
-  }, [currentId, dispatch]);
-
-  return (
+const App = () => (
+  <BrowserRouter>
     <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="sticky" color="inherit" >
-        <Typography className={classes.heading} variant="h2" align="center">Portfolio 2020</Typography>
-        <img className={classes.image} src={favicon} alt="favicon" height="60" />
-      </AppBar>
-      <Grow in>
-        <Container>
-          <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch" spacing={3}>
-            <Grid item xs={12} sm={7} >
-              <Posts setCurrentId={setCurrentId} />
-            </Grid>
-            <Grid item xs={12} sm={4} >
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
+      <Navbar />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/auth" exact component={Auth} />
+      </Switch>
     </Container>
-  );
-};
+  </BrowserRouter>
+);
 
 export default App;
