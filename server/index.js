@@ -14,8 +14,12 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Hello to Portfolio API');
+});
+
 const databaseURL = process.env.CONNECTION_URL;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(databaseURL, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
