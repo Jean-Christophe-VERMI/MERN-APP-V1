@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { AUTH } from '../../constants/actionTypes';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { GOOGLE_CLIENT_ID } from '../../googleAuth';
@@ -14,6 +17,8 @@ const Auth = () => {
   const classes = useStyles();
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -30,23 +35,24 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  // const googleSuccess = async (res) => {
-  //   const result = res?.profileObj;
-  //   const token = res?.tokenId;
+  const googleSuccess = async (res) => {
+    const result = res?.profileObj;
+    const token = res?.tokenId;
 
-  //   try {
-  //     dispatch({ type: AUTH, data: { result, token } });
-
-  //     history.push('/');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  const googleSuccess = (res) => {
-    console.log(res);
+    try {
+      dispatch({ type: AUTH, data: { result, token } });
+      console.log(res);
+      history.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
+  
 
-  const googleError = () => alert('Oups... Connexion avec compte Google refusé. Essayez de nouveau.');
+  const googleError = (error) => {
+    console.log(error);
+    console.log('Oups... Connexion avec compte Google refusé. Essayez de nouveau.');
+  };
 
   //const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
