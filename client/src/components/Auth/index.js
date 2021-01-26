@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { AUTH } from '../../constants/actionTypes';
+import { signin, signup } from '../../actions/auth';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { GOOGLE_CLIENT_ID } from '../../googleAuth';
@@ -12,25 +13,38 @@ import Input from './input';
 //Styles
 import useStyles from './style';
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
   const classes = useStyles();
   const [isSignup, setIsSignup] = useState(false);
+  const [form, setForm] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    if (isSignup) {
+      console.log(initialState);
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   };
 
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log({ ...formData, [e.target.name]: e.target.value });
   };
 
   const switchMode = () => {
+    setForm(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
@@ -48,14 +62,10 @@ const Auth = () => {
     }
   };
   
-
   const googleError = (error) => {
     console.log(error);
     console.log('Oups... Connexion avec compte Google refusé. Essayez de nouveau.');
   };
-
-  //const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
 
   return (
     <Container component="main" maxWidth="xs">
@@ -69,13 +79,13 @@ const Auth = () => {
             {
               isSignup && (
                 <>
-                  <Input name="Nom" label="Nom" handleChange={handleChange} autoFocus half />
-                  <Input name="Prénom" label="Prénom" handleChange={handleChange} autoFocus half />
+                  <Input name="firstName" label="Nom" handleChange={handleChange} autoFocus half />
+                  <Input name="lastName" label="Prénom" handleChange={handleChange} autoFocus half />
                 </>
               )
             }
             <Input name="email" label="Adresse email" type="email" handleChange={handleChange}/>
-            <Input name="mot de passe" label="Mot de passe" type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword}/>
+            <Input name="password" label="Mot de passe" type={showPassword ? "text" : "password"} handleChange={handleChange} handleShowPassword={handleShowPassword} />
             { isSignup && <Input name="confirmPassword" label="Confirmation mot de passe" handleChange={handleChange} type="password" /> }
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
