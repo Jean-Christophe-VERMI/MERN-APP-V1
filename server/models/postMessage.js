@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const postSchema = mongoose.Schema({
   title: String,
   content: String,
+  name: String,
   author: String,
   tags: [String],
   urlImg: String,
