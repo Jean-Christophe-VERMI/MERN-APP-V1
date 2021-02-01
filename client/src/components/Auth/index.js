@@ -6,7 +6,6 @@ import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { GOOGLE_CLIENT_ID } from '../../googleAuth';
 import Icon from './icon';
 import Input from './input';
 
@@ -14,6 +13,7 @@ import Input from './input';
 import useStyles from './style';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 
 const Auth = () => {
   const classes = useStyles();
