@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import { LOGOUT } from '../../constants/actionTypes';
 import { AppBar, Button, Toolbar, Avatar, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 //Styles
 import favicon from '../../images/favicon.png';
@@ -17,7 +18,12 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = user?.token;
-    // JWT...
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
