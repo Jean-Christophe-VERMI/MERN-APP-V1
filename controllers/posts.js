@@ -1,14 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import PostMessage from '../models/postMessage.js';
+import PostProjects from '../models/postProjects.js';
 
 const router = express.Router();
 
 export const getPosts = async (req, res) => {
   try {
-    const postMessages = await PostMessage.find();
-    res.status(200).json(postMessages);
+    const postProjects = await PostProjects.find();
+    res.status(200).json(postProjects);
 
   } catch (error) {
     res.status(404).json({message: error.message});
@@ -19,7 +19,7 @@ export const getPost = async (req, res) => {
   const { id } = req.params;
 
   try {
-      const post = await PostMessage.findById(id);
+      const post = await PostProjects.findById(id);
       
       res.status(200).json(post);
   } catch (error) {
@@ -30,12 +30,12 @@ export const getPost = async (req, res) => {
 export const createPost = async (req, res) => {
   const post = req.body;
 
-  const newPostMessage = new PostMessage({ ...post, author: req.userId, createdAt: new Date().toISOString() })
+  const newPostProjects = new PostProjects({ ...post, author: req.userId, createdAt: new Date().toISOString() })
 
   try {
-      await newPostMessage.save();
+      await newPostProjects.save();
 
-      res.status(201).json(newPostMessage );
+      res.status(201).json(newPostProjects );
   } catch (error) {
       res.status(409).json({ message: error.message });
   }
@@ -43,13 +43,13 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
   const { id } = req.params;
-  const { title, content, author, urlImg, tags } = req.body;
+  const { title, content, author, urlImg, tags, github } = req.body;
   
   if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-  const updatedPost = { author, title, content, tags, urlImg, _id: id };
+  const updatedPost = { author, title, content, tags, github, urlImg, _id: id };
 
-  await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+  await PostProjects.findByIdAndUpdate(id, updatedPost, { new: true });
 
   res.json(updatedPost);
 }

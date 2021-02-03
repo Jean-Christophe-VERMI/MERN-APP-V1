@@ -5,18 +5,15 @@ const postSchema = mongoose.Schema({
   content: String,
   name: String,
   author: String,
+  github: String,
   tags: [String],
   urlImg: String,
-  likes: {
-    type: [String],
-    default: [],
-  },
   createdAt: {
     type: Date,
     default: new Date()
   },
 });
 
-const PostMessage = mongoose.model('PostMessage', postSchema);
+const PostProjects = mongoose.model('PostProjects', postSchema);
 
-export default PostMessage;
+export default PostProjects;
