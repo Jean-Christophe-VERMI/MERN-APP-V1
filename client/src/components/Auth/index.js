@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
 import { useDispatch } from 'react-redux';
 import { AUTH } from '../../constants/actionTypes';
 import { signin, signup } from '../../actions/auth';
@@ -13,7 +12,6 @@ import Input from './input';
 import useStyles from './style';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
 
 const Auth = () => {
   const classes = useStyles();
@@ -49,24 +47,6 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  const googleSuccess = async (res) => {
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-
-    try {
-      dispatch({ type: AUTH, data: { result, token } });
-      console.log(res);
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
-  const googleError = (error) => {
-    console.log(error);
-    console.log('Oups... Connexion avec compte Google refusé. Essayez de nouveau.');
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -91,25 +71,6 @@ const Auth = () => {
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             { isSignup ? 'Inscription' : 'Connexion' }
           </Button>
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            render={(renderProps) => (
-              <Button 
-                className={classes.googleButton} 
-                color="primary" 
-                fullWidth 
-                onClick={renderProps.onClick} 
-                //disabled={renderProps.disabled} 
-                startIcon={<Icon />} 
-                variant="contained"
-              >
-                Se connecter avec Google
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          />
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>

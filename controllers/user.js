@@ -1,8 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import config from '../config/index.js';
-
 import UserModal from "../models/user.js";
+import config from '../config/index.js';
 
 const { JWT_SECRET } = config;
 
@@ -25,6 +24,7 @@ export const signin = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
+
 
 export const signup = async (req, res) => {
   const { email, password, confirmPassword, firstName, lastName } = req.body;
@@ -49,4 +49,5 @@ export const signup = async (req, res) => {
     
     console.log(error);
   }
+
 };
