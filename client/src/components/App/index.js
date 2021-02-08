@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Container} from '@material-ui/core';
 
 // Components
-import Header from '../Header';
+import Home from '../Home';
 import Projects from '../Projects';
 import Blog from '../Blog';
 import Contact from '../Contact';
@@ -16,12 +16,11 @@ const App = () => {
   const classes = useStyles();
 
   return (
-
     <BrowserRouter>
       <Container className={classes.container} maxWidth="lg">
-        <Header />
+        <Home />
         <Switch>
-          <Route path="/projets" exact component={Projects} />
+          <Route path="/projets" component={Projects} />
           <Route path="/blog" exact component={Blog} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/auth" exact component={Auth} />

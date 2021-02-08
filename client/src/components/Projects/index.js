@@ -8,9 +8,13 @@ import { getPosts } from '../../actions/posts.js';
 import Form from '../Form';
 import Posts from '../Posts';
 
+//Styles
+import useStyles from './style';
+
 const Projects = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(()=> {
     dispatch(getPosts());
@@ -18,7 +22,7 @@ const Projects = () => {
 
   return (
     <Grow in>
-      <Container>
+      <Container className={classes.container}>
         <Grid container justify="space-between" alignItems="stretch" spacing={3}>
           <Grid item xs={12} sm={7}>
             <Posts setCurrentId={setCurrentId} />
