@@ -4,6 +4,7 @@ export default makeStyles({
   media: {
     height: 0,
     paddingTop: '56.25%',
+    backgroundPosition: 'cover',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     backgroundBlendMode: 'darken',
   },
@@ -17,20 +18,20 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    borderRadius: '15px',
+    borderRadius: '5px',
     height: '100%',
     position: 'relative',
   },
   overlay: {
     position: 'absolute',
-    top: '20px',
-    left: '20px',
+    top: '10px',
+    left: '5px',
     color: 'white',
   },
   overlay2: {
     position: 'absolute',
-    top: '20px',
-    right: '20px',
+    top: '10px',
+    right: '5px',
     color: 'white',
   },
   grid: {
@@ -39,7 +40,8 @@ export default makeStyles({
   details: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px',
+    alignItems: 'center',
+    padding: '5px 0px',
   },
   title: {
     padding: '0 16px',

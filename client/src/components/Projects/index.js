@@ -8,7 +8,7 @@ import { getPosts } from '../../actions/posts.js';
 import Form from '../Form';
 import Posts from '../Posts';
 
-const Home = () => {
+const Projects = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
 
@@ -32,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Projects;

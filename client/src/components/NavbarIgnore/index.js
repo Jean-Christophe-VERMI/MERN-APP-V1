@@ -36,8 +36,8 @@ const Navbar = () => {
   return (
     <AppBar className={classes.appBar} position="static" color="inherit" >
       <div className={classes.brandContainer}>
-        <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">Portfolio 2020</Typography>
-        <img className={classes.image} src={favicon} alt="favicon" height="60" />
+        <Typography component={Link} to="/" className={classes.heading} variant="h4" align="center">Jean-Christophe Vermi</Typography>
+        <Typography component={Link} to="/" className={classes.heading} variant="h6" align="center">Dévelppeur fullstack javascript</Typography>
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (
@@ -47,7 +47,7 @@ const Navbar = () => {
             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Déconnexion</Button>
           </div>
         ) : (
-            <Button component={Link} to="/auth" variant="contained" color="primary">Connexion</Button>
+            <Button component={Link} to="/auth" variant="contained" color="primary">Connexion / MenuBurger</Button>
         )}
       </Toolbar>
     </AppBar>

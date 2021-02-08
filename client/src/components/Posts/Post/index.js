@@ -3,6 +3,7 @@ import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useDispatch } from 'react-redux';
+import githubIcon from './github-icon.png';
 
 import { deletePost } from '../../../actions/posts';
 import useStyles from './style';
@@ -25,12 +26,12 @@ const Post = ({ post, setCurrentId }) => {
           </Button>
         </div>
       )}
-      <div className={classes.details}>
-        <Typography variant="body2" color="textSecondary" component="p">{post.content}</Typography>
-      </div>
       <CardContent>
-        <Typography variant="body2" color="textSecondary"><a href={post.github} target="_blank">Github</a></Typography>
-        <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{post.content}</Typography>
+        <div className={classes.details}>
+          <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography>
+          <a href={post.github} target="_blank" title="Repository Git"><img src={githubIcon} alt='logo github'/></a>
+        </div>
       </CardContent>
       <CardActions className={classes.cardActions}>
         {(user?.result?.googleId === post?.author || user?.result?._id === post?.author) && (
