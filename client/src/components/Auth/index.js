@@ -20,7 +20,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
 
-  const history = useHistory();
+  const history = useHistory('/admin/jcvauth');
   const dispatch = useDispatch();
 
   const handleShowPassword = () => setShowPassword(!showPassword);
@@ -30,9 +30,12 @@ const Auth = () => {
 
     if (isSignup) {
       console.log(initialState);
-      dispatch(signup(formData, history));
+      dispatch(signup(formData, history.push('/')));
     } else {
-      dispatch(signin(formData, history));
+      setTimeout(() => {
+        dispatch(signin(formData, history.push('/')));
+      }, 1000);
+      
     }
   };
 
@@ -48,7 +51,7 @@ const Auth = () => {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" className={classes.container} maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />

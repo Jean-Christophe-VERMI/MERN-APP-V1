@@ -34,7 +34,7 @@ const Menu = styled.div`
     justify-content: center;
     text-decoration: none;
     text-transform: uppercase;
-    color: #44bac4;
+    color: #000000;
     font-size: 18px;
     margin: .5rem ;
     padding: 7px;
@@ -42,7 +42,6 @@ const Menu = styled.div`
 
     &:hover {
       cursor: pointer;
-      color: #000000;
     }
 
   }

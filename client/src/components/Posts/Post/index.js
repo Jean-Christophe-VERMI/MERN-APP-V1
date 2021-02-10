@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
+import Modal from '@material-ui/core/Modal';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useDispatch } from 'react-redux';
 import githubIcon from './github-icon.png';
 
+import FormProject from '../../FormProject';
+
 import { deletePost } from '../../../actions/posts';
 import useStyles from './style';
 
 const Post = ({ post, setCurrentId }) => {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
+
+  const handleOpen = () => {
+    setCurrentId(post._id)
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Card className={classes.card}>
@@ -21,11 +34,19 @@ const Post = ({ post, setCurrentId }) => {
       </div>
       {(user?.result?.googleId === post?.author || user?.result?._id === post?.author) && (
         <div className={classes.overlay2}>
-          <Button onClick={() => setCurrentId(post._id)} style={{ color: 'white' }} size="small">
+          <Button onClick={handleOpen} style={{ color: 'white' }} size="small">
             <MoreHorizIcon fontSize="default" />
           </Button>
         </div>
       )}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+         <FormProject handleClose={handleClose} currentId={post._id} setCurrentId={setCurrentId} />
+      </Modal>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">{post.content}</Typography>
         <div className={classes.details}>

@@ -7,6 +7,7 @@ export default makeStyles((theme) => ({
     },
   },
   paper: {
+    margin: '2rem',
     padding: theme.spacing(2),
   },
   form: {

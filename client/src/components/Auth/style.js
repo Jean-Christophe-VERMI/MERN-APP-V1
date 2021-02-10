@@ -1,8 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  container: {
+    height: '100vh',
+    background: 'rgb(68,186,196)',
+    background: 'linear-gradient(180deg, rgba(68,186,196,1) 0%, rgba(68,161,196,1) 35%, rgba(54,118,180,1) 100%)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   paper: {
-    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

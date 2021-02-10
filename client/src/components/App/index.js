@@ -4,12 +4,10 @@ import { Container} from '@material-ui/core';
 
 // Components
 import Home from '../Home';
-import Projects from '../Projects';
 import Blog from '../Blog';
 import Contact from '../Contact';
 import Auth from '../Auth';
 
-import reset from './reset.css';
 import useStyles from './style';
 
 const App = () => {
@@ -18,12 +16,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Container className={classes.container} maxWidth="lg">
-        <Home />
         <Switch>
-          <Route path="/projets" component={Projects} />
+          <Route path="/" exact component={Home} />
           <Route path="/blog" exact component={Blog} />
           <Route path="/contact" exact component={Contact} />
-          <Route path="/auth" exact component={Auth} />
+          <Route path="/admin/jcvauth" exact component={Auth} />
         </Switch>
       </Container>
     </BrowserRouter>
