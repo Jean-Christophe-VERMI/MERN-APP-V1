@@ -12,7 +12,6 @@ import useStyles from './style';
 
 const Projects = () => {
   const [currentId, setCurrentId] = useState(null);
-  const [isLogged, setIsLogged] = useState(false);
 
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -20,17 +19,6 @@ const Projects = () => {
   useEffect(()=> {
     dispatch(getPosts());
   }, [currentId, dispatch]);
-
-  useEffect(() => {
-    const checkUserData = () => {
-      const user = JSON.parse(localStorage.getItem('profile'));
-  
-      if (user) {
-        setIsLogged(true);
-      }
-    };
-    checkUserData();
-  }, []);
 
   return (
     <Grow in>

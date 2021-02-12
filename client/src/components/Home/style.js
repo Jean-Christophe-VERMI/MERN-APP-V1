@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import bg from './images/bg1.jpg';
 import bgMobile from './images/bg-mobile.png';
+import bgMain from './images/webbg-mini.jpg';
 
 export default makeStyles((theme) => ({
 
@@ -61,13 +62,45 @@ export default makeStyles((theme) => ({
 
   downButton: {
     margin: '2rem 5rem',
+    border: ' 1px solid #44bac4',
+    borderRadius: '5px',
+    color: '#44bac4',
+    "&:hover": {
+      border: ' 1px solid #44bac4',
+    }
+  },
+
+  canvas: {
+    position: "absolute",
+    top:"0",
+    left: "0",
   },
 
   main: {
     background: 'rgb(68,186,196)',
-    background: 'linear-gradient(180deg, rgba(68,186,196,1) 0%, rgba(68,161,196,1) 35%, rgba(54,118,180,1) 100%)',
+    background: 'linear-gradient(135deg, rgba(68,186,196,1) 0%, rgba(103,195,231,1) 30%, rgba(245,247,249,1) 100%)',
+    // boxShadow: 'inset 0 0 0 2000px rgba(86, 189, 199, 0.4)',
     width: '100%',
-    minHeight: '100vh',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+  },
+
+  divFormBtn: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    padding: '1rem',
+  },
+
+  formBtn: {
+    position: 'absolute',
+  },
+
+  goTop: {
+    padding: '2rem',
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 
 
@@ -95,5 +128,6 @@ export default makeStyles((theme) => ({
       fontSize: '20px',
     },
   },
+  
   
 }));
