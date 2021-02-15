@@ -8,6 +8,7 @@ import path from 'path';
 //Routes
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
+import contactRoute from './routes/contact.js';
 
 const app = express();
 const { MONGO_URI, MONGO_DB_NAME } = config;
@@ -15,6 +16,7 @@ const { MONGO_URI, MONGO_DB_NAME } = config;
 app.use(cors());
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+app.use('/', contactRoute);
 
 // DB Config
 const db = `${MONGO_URI}/${MONGO_DB_NAME}`;
