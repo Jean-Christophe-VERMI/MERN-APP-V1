@@ -1,10 +1,10 @@
 import { SEND_CONTACT_FORM } from '../constants/actionTypes';
 
-const contactReducer = (state = { authData: null }, action) => {
+const contactReducer = (state = { notification : "" }, action) => {
   switch (action.type) {
 
     case SEND_CONTACT_FORM:
-      return { ...state, formData: action.data, loading: false, errors: null };
+      return { ...state, notification: action.data, loading: false, errors: null };
 
     default:
       return state;

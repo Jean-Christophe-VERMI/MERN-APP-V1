@@ -11,6 +11,7 @@ import useStyles from './style';
 
 const FormContact = () => {
   const [formData, setFormData] = useState({email: '', message: ''});
+  const [isSend, setIsSend] = useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -27,8 +28,9 @@ const FormContact = () => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">Contactez-moi</Typography>
+        <Typography variant="h6" className={classes.title}>Contactez-moi</Typography>
         <TextField 
+          className={classes.input}
           name="email" 
           type='email'
           required 
@@ -39,6 +41,7 @@ const FormContact = () => {
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
         <TextField 
+          className={classes.input}
           name="message"  
           multiline
           rows={4} 
