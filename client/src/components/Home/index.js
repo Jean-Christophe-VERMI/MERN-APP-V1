@@ -19,7 +19,7 @@ import useStyles from './style';
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(null);
-  const [isLogged, setIsLogged] = useState(false);
+  const user = JSON.parse(localStorage.getItem('profile'));
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -32,13 +32,6 @@ const Home = () => {
   useEffect(()=> {
     dispatch(getPosts());
   }, [currentId, dispatch]);
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('profile'));
-    if (user !== null) {
-      setIsLogged(true);
-    }
-  }, []);
 
   const handleOpen = () => {
     setCurrentId(currentId);
@@ -75,7 +68,7 @@ const Home = () => {
         </div>
       </header>
       <main ref={projectElem} className={classes.main}>
-        {isLogged && (
+        {user && (
           <div className={classes.divFormBtn} >
             <Button onClick={handleOpen} className={classes.formBtn} variant="contained">
               Ajouter un projet

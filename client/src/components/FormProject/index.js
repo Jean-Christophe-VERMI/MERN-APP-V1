@@ -78,7 +78,7 @@ const FormProject = ({ currentId, setCurrentId, handleClose }) => {
         <TextField name="title" variant="outlined" label="Titre" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
         <TextField name="content" variant="outlined" label="Description" fullWidth value={postData.content} onChange={(e) => setPostData({ ...postData, content: e.target.value })} />
         <TextField name="github" variant="outlined" label="Github" fullWidth value={postData.github} onChange={(e) => setPostData({ ...postData, github: e.target.value })} />
-        <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(',') })} />
+        <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value})} />
         <div className={classes.fileInput}>
           <input 
             // L'image est enregistré dans cloud storage firebase

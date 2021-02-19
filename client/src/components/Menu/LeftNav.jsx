@@ -1,5 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useDispatch } from 'react-redux';
+import * as actionType from '../../constants/actionTypes';
 
 import styled from 'styled-components';
 
@@ -14,7 +17,6 @@ const Menu = styled.div`
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-200%)'};
   top: 0;
   left: 0;
-  height: 100vh;
   width: 250px;
   padding-left: 3rem;
   padding-top: .5rem;
@@ -44,6 +46,10 @@ const Menu = styled.div`
       cursor: pointer;
     }
 
+  }
+
+  .logout {
+    cursor: pointer;
   }
 
   img {
@@ -87,11 +93,31 @@ const Menu = styled.div`
 `;
 
 const LeftNav = ({ open, setOpen }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleLogout = () => {
+
+    const logout = () => {
+      dispatch({ type: actionType.LOGOUT });
+      setUser(null);
+      history.push('/');
+    }
+    logout();
+  };
+
+
   return (
     <Menu open={open}>
       <div className="nav">
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/'>Accueil</NavLink>
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/contact'>Contact</NavLink>
+        {user && (
+          <div>
+            <ExitToAppIcon className='logout' onClick={handleLogout}/>
+          </div>
+        )}
       </div>
     </Menu>
   )

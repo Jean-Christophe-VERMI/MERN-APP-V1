@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
 
 //Component
 import Menu from '../Menu/Burger';
@@ -16,8 +16,12 @@ const Contact = () => {
   return (
     <div className={classes.container}>
       <Menu />
-      <Notification />
+      <div className={classes.topForm}>
+        <h4 className={classes.title}>Contactez-moi</h4>
+        <MailOutlineOutlinedIcon />
+      </div>
       <FormContact />
+      <Notification />
     </div>
   );
 };

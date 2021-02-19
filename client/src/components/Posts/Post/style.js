@@ -2,53 +2,83 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
   media: {
-    height: 0,
-    paddingTop: '56.25%',
+    width: '100%',
+    height: '150px',
     backgroundPosition: 'cover',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    backgroundBlendMode: 'darken',
+   
   },
+
   border: {
     border: 'solid',
   },
-  fullHeightCard: {
-    height: '100%',
-  },
+
   card: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     borderRadius: '5px',
-    height: '100%',
     position: 'relative',
+    webkitBoxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
+    boxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
   },
-  overlay: {
+
+  cardActions: {
     position: 'absolute',
-    top: '10px',
-    left: '5px',
-    color: 'white',
-  },
-  overlay2: {
-    position: 'absolute',
-    top: '10px',
+    top: '0px',
     right: '5px',
-    color: 'white',
   },
+
+  action1: {
+    position: 'absolute',
+    top: '0px',
+    left: '5px',
+  },
+
+  action2: {
+    position: 'absolute',
+    top: '0px',
+    right: '5px',
+  },
+
+  content: {
+    height: '120px',
+    padding: '.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+
+  header: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-beetwen',
+    alignItems: 'center',
+  },
+
+  title: {
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+    position: 'center',
+  },
+
+  modalBtn: {
+    color: 'black',
+  },
+
   grid: {
     display: 'flex',
   },
+
   details: {
+    height: '100px',
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '5px 0px',
+    alignItems: 'flex-start',
   },
-  title: {
-    padding: '0 16px',
-  },
-  cardActions: {
-    padding: '0 16px 8px 16px',
+
+  tags: {
     display: 'flex',
-    justifyContent: 'space-between',
-  },
+  }
+
 });

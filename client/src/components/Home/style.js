@@ -78,8 +78,7 @@ export default makeStyles((theme) => ({
 
   main: {
     background: 'rgb(68,186,196)',
-    background: 'linear-gradient(135deg, rgba(68,186,196,1) 0%, rgba(103,195,231,1) 30%, rgba(245,247,249,1) 100%)',
-    // boxShadow: 'inset 0 0 0 2000px rgba(86, 189, 199, 0.4)',
+    background: 'linear-gradient(150deg, rgba(68,186,196,1) 56%, rgba(255,255,255,1) 56%)',
     width: '100%',
     height: '100vh',
     display: 'flex',

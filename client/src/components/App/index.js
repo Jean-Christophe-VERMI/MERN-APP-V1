@@ -4,8 +4,6 @@ import { Container} from '@material-ui/core';
 
 // Components
 import Home from '../Home';
-import Footer from '../Footer';
-import Blog from '../Blog';
 import Contact from '../Contact';
 import Auth from '../Auth';
 
@@ -22,7 +20,6 @@ const App = () => {
           <Route path="/contact" exact component={Contact} />
           <Route path="/admin/jcvauth" exact component={Auth} />
         </Switch>
-        <Footer />
       </Container>
     </BrowserRouter>
   );
