@@ -1,5 +1,4 @@
 import React from 'react';
-import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
 
 //Component
 import Menu from '../Menu/Burger';
@@ -16,10 +15,6 @@ const Contact = () => {
   return (
     <div className={classes.container}>
       <Menu />
-      <div className={classes.topForm}>
-        <h4 className={classes.title}>Contactez-moi</h4>
-        <MailOutlineOutlinedIcon />
-      </div>
       <FormContact />
       <Notification />
     </div>

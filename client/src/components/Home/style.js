@@ -20,10 +20,15 @@ export default makeStyles((theme) => ({
 
   name: {
     padding: '25px',
+    color: '#5d6888',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+  },
+
+  title: {
+    color: '#5d6888',
   },
 
   technos: {
@@ -51,22 +56,32 @@ export default makeStyles((theme) => ({
   },
 
   description: {
+    width: '30%',
     height: '80vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    paddingLeft: '50px',
+    alignItems: 'center',
+    paddingLeft: '40px',
     fontSize: '42px',
   },
 
+  techLogo: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    margin: '.5rem'
+  },
+
   downButton: {
-    margin: '2rem 5rem',
-    border: ' 1px solid #44bac4',
+    border: ' 1px solid #5d6888',
     borderRadius: '5px',
-    color: '#44bac4',
+    color: '#5d6888',
     "&:hover": {
-      border: ' 1px solid #44bac4',
+      border: ' 1px solid #5d6888',
+      background: '#5d6888',
+      color: '#ffffff',
     }
   },
 
@@ -77,8 +92,7 @@ export default makeStyles((theme) => ({
   },
 
   main: {
-    background: 'rgb(68,186,196)',
-    background: 'linear-gradient(150deg, rgba(68,186,196,1) 56%, rgba(255,255,255,1) 56%)',
+    background: '#ffffff',
     width: '100%',
     height: '100vh',
     display: 'flex',
@@ -86,17 +100,8 @@ export default makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
 
-  divFormBtn: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    padding: '1rem',
-  },
-
-  formBtn: {
-    position: 'absolute',
-  },
-
   goTop: {
+    color: '#5d6888',
     padding: '2rem',
     display: 'flex',
     justifyContent: 'flex-end',

@@ -1,6 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
+
+  tags: {
+    display: 'flex',
+  },
+
   tag: {
     margin: '0 .3rem 0 0',
     border: '1px solid #9eadba',

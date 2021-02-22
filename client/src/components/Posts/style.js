@@ -1,10 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  mainContainer: {
+  container: {
+    width: '100%',
     display: 'flex',
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
+
   smMargin: {
     margin: theme.spacing(1),
   },

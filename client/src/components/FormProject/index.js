@@ -9,8 +9,8 @@ import { createPost, updatePost } from '../../actions/posts';
 //Style
 import useStyles from './style';
 
+const FormProject = React.forwardRef(({ currentId, setCurrentId, handleClose, ref }) => {
 
-const FormProject = ({ currentId, setCurrentId, handleClose }) => {
   const [postData, setPostData] = useState({title: '', content: '', github:'', tags: '', urlImg: ''});
   const [savePost, setSavePost] = useState(false);
   const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
@@ -18,11 +18,10 @@ const FormProject = ({ currentId, setCurrentId, handleClose }) => {
   const classes = useStyles();
   const [image, setImage] = useState(null);
   const user = JSON.parse(localStorage.getItem('profile'));
-
+  
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
-
 
   useEffect(() => {
     if (savePost && currentId === null) {
@@ -72,7 +71,7 @@ const FormProject = ({ currentId, setCurrentId, handleClose }) => {
   };
 
   return (
-    <Paper className={classes.paper}>
+    <Paper ref={ref} className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? 'Editer' : 'Créer' } un projet web</Typography>
         <TextField name="title" variant="outlined" label="Titre" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
@@ -92,6 +91,6 @@ const FormProject = ({ currentId, setCurrentId, handleClose }) => {
       </form>
     </Paper>
   );
-};
+});
 
 export default FormProject;

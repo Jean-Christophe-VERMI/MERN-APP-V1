@@ -8,7 +8,6 @@ const Notification = () => {
   const [isNotif, setIsNotif] = useState(false);
   const classes = useStyles();
   const notification = useSelector((state) => state.contact.notification);
-  console.log(notification);
 
   useEffect(() => {
      setIsNotif(true);

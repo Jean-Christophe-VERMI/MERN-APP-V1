@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import React, { useState } from 'react';
+import { TextField, Button, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
 import ReCAPTCHA from "react-google-recaptcha";
 
 import iconGit from './images/github-icon.png';
@@ -36,7 +37,6 @@ const FormContact = () => {
       <Paper className={classes.paper1}>
         <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField 
-            className={classes.input}
             className={classes.email}
             name="email" 
             type="email"
@@ -48,7 +48,6 @@ const FormContact = () => {
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
           <TextField 
-            className={classes.input}
             className={classes.message}
             name="message"  
             multiline
@@ -75,11 +74,11 @@ const FormContact = () => {
           <p>Développeur web</p>
         </div>
         <div className={classes.middleInfos}>
-          <p>image</p>
+          <MailOutlineOutlinedIcon /><p className={classes.emailContact}>contact@jcvdevpro.fr</p>
         </div>
         <div className={classes.bottomInfos}>
-          <a className={classes.logo} href="https://github.com/Jean-Christophe-VERMI" target="_blank" title="Github"><img src={iconGit} alt='logo github'/></a>
-          <a className={classes.logo} href="https://www.linkedin.com/in/jean-christophe-vermi" target="_blank" title="LinkedIn"><img src={iconLinkedIn} alt='logo linkedIn'/></a>
+          <a className={classes.logo} href="https://github.com/Jean-Christophe-VERMI" target="_blank" rel="noopener noreferrer" title="Github"><img src={iconGit} alt='logo github'/></a>
+          <a className={classes.logo} href="https://www.linkedin.com/in/jean-christophe-vermi" target="_blank" rel="noopener noreferrer" title="LinkedIn"><img src={iconLinkedIn} alt='logo linkedIn'/></a>
         </div>
       </Paper>
     </div>

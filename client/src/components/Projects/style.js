@@ -1,12 +1,16 @@
-import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { FormHelperText } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
 
   container: {
-    padding: '5rem',
+    background: '#44bac4',
+    padding: '2rem',
   },
 
-  title: {
+  header: {
+    display: 'flex',
+    alignItems: 'center',
     marginBottom: '2rem',
     color: 'white',
     textTransform: 'uppercase',
@@ -14,7 +18,15 @@ export default makeStyles((theme) => ({
     fontWeight: 'bold',
   },
 
-  
+  divFormBtn: {
+    marginLeft: '1rem'
+  },
+
+  formBtn: {
+    backgroundColor: '#ffffff',
+    padding: '.2rem .5rem',
+  },
+
   // Responsive
   [theme.breakpoints.down('sm')]: {
     container: {

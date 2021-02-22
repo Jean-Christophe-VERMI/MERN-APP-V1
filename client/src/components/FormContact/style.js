@@ -1,4 +1,4 @@
-import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
 
@@ -16,7 +16,7 @@ export default makeStyles(() => ({
   },
 
   paper1: {
-    backgroundColor: '#ededf0',
+    backgroundColor: '#cfcfd1',
     height: '100%',
     padding: '2rem',
     borderRadius: '4px 0 0 4px',
@@ -31,8 +31,8 @@ export default makeStyles(() => ({
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    justifyContent: 'center',
   },
+
 
   email: {
     backgroundColor: 'white',
@@ -57,8 +57,8 @@ export default makeStyles(() => ({
   },
 
   paper2: {
-    backgroundColor: '#9c9c9d',
-    color: 'white',
+    backgroundColor: '#44bac4',
+    color: '#ffffff',
     height: '100%',
     padding: '2rem',
     borderRadius: '0 4px 4px 0',
@@ -70,10 +70,18 @@ export default makeStyles(() => ({
   },
 
   topInfos: {
-    color: 'white',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+  },
+
+  middleInfos: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  emailContact: {
+    marginLeft: '10px',
   },
 
   name: {

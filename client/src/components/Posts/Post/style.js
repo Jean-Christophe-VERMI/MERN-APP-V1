@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles({
+
   media: {
-    width: '100%',
     height: '150px',
     backgroundPosition: 'cover',
-   
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundBlendMode: 'darken',
   },
 
   border: {
@@ -13,9 +14,11 @@ export default makeStyles({
   },
 
   card: {
+    width: '32%',
+    //minHeight: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     borderRadius: '5px',
     position: 'relative',
     webkitBoxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
@@ -41,8 +44,7 @@ export default makeStyles({
   },
 
   content: {
-    height: '120px',
-    padding: '.5rem',
+    padding: '1rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -50,9 +52,6 @@ export default makeStyles({
 
   header: {
     width: '100%',
-    display: 'flex',
-    justifyContent: 'space-beetwen',
-    alignItems: 'center',
   },
 
   title: {
@@ -70,15 +69,13 @@ export default makeStyles({
   },
 
   details: {
-    height: '100px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
   },
 
-  tags: {
-    display: 'flex',
-  }
+  description: {
+    marginBottom: '1rem',
+  },
 
 });

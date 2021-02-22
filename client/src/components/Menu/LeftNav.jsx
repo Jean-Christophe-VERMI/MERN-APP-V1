@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
@@ -36,7 +36,7 @@ const Menu = styled.div`
     justify-content: center;
     text-decoration: none;
     text-transform: uppercase;
-    color: #000000;
+    color: #5d6888;
     font-size: 18px;
     margin: .5rem ;
     padding: 7px;
