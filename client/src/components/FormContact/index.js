@@ -66,7 +66,6 @@ const FormContact = () => {
           <div className={classes.formActions}>
           <ReCAPTCHA
             ref={recaptchaRef}
-            size="invisible"
             sitekey="6Le4uV4aAAAAAL2L2bZPgRX4b2P6c6hOTfrzhzW1"
           />
           <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Envoyer</Button>
