@@ -17,6 +17,7 @@ import useStyles from './style';
 
 const FormContact = () => {
   const [formData, setFormData] = useState({email: '', message: ''});
+  const [reCaptchaIsDone, setRecaptchaIsDone] = useState(false);
   const recaptchaRef = React.useRef();
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -27,13 +28,19 @@ const FormContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await recaptchaRef.current.executeAsync();
-
-    if(token) {
+    
+    if(reCaptchaIsDone) {
       dispatch(sendContactForm(formData));
       clear();
     }
     
+  };
+
+  const handlereCaptcha = () => {
+    const reCaptchaValue = recaptchaRef.current.getValue();
+    if (reCaptchaValue) {
+      setRecaptchaIsDone(true);
+    };
   };
 
   return (
@@ -67,6 +74,7 @@ const FormContact = () => {
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey="6Le4uV4aAAAAAL2L2bZPgRX4b2P6c6hOTfrzhzW1"
+            onChange={handlereCaptcha}
           />
           <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Envoyer</Button>
           </div>
