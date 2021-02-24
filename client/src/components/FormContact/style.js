@@ -23,6 +23,13 @@ export default makeStyles(() => ({
     width: '70%',
     display: 'flex',
     alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+
+  notif: {
+    display: 'flex',
+    alignItems: 'ccenter',
   },
 
   form: {
@@ -58,7 +65,7 @@ export default makeStyles(() => ({
 
   paper2: {
     backgroundColor: '#44bac4',
-    color: '#ffffff',
+    color: '#000000',
     height: '100%',
     padding: '2rem',
     borderRadius: '0 4px 4px 0',
@@ -78,6 +85,7 @@ export default makeStyles(() => ({
   middleInfos: {
     display: 'flex',
     alignItems: 'center',
+    fontWeight: 'bold',
   },
 
   emailContact: {

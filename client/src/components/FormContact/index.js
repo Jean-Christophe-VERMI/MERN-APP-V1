@@ -46,8 +46,11 @@ const FormContact = () => {
 
   return (
     <div className={classes.container}>
-      <Notification />
       <Paper className={classes.paper1}>
+        <div className={classes.notif}>
+        <p>Vous pouvez me contacter via ce formulaire</p>
+        <Notification />
+        </div>
         <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField 
             className={classes.email}

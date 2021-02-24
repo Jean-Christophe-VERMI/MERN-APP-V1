@@ -5,7 +5,8 @@ export default makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: '1rem',
+    margin: '0',
+    padding: '.3rem',
   },
 
 }));
