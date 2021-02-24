@@ -29,6 +29,7 @@ export default makeStyles(() => ({
 
   notif: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'ccenter',
   },
 
