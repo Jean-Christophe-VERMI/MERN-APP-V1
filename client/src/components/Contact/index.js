@@ -2,7 +2,6 @@ import React from 'react';
 
 //Component
 import Menu from '../Menu/Burger';
-import Notification from '../Notification';
 import FormContact from '../FormContact';
 
 //Style
@@ -16,7 +15,6 @@ const Contact = () => {
     <div className={classes.container}>
       <Menu />
       <FormContact />
-      <Notification />
     </div>
   );
 };

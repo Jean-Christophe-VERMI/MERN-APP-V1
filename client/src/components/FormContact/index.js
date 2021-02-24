@@ -3,13 +3,14 @@ import { TextField, Button, Paper } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import MailOutlineOutlinedIcon from '@material-ui/icons/MailOutlineOutlined';
 import ReCAPTCHA from "react-google-recaptcha";
-
 import iconGit from './images/github-icon.png';
 import iconLinkedIn from './images/linkedin-icon.png';
 
-
 //Actions
 import { sendContactForm } from '../../actions/contact';
+
+//Component
+import Notification from '../Notification';
 
 //Style
 import useStyles from './style';
@@ -45,6 +46,7 @@ const FormContact = () => {
 
   return (
     <div className={classes.container}>
+      <Notification />
       <Paper className={classes.paper1}>
         <form className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
           <TextField 
