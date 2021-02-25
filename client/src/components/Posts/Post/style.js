@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles({
+export default makeStyles((theme) => ({
 
   media: {
     height: '150px',
@@ -78,4 +78,13 @@ export default makeStyles({
     marginBottom: '1rem',
   },
 
-});
+  [theme.breakpoints.down('sm')]: {
+
+    card: {
+      width: '100%',
+      marginBottom: '1rem',
+    },
+    
+  },
+
+}));

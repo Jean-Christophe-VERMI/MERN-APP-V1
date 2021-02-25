@@ -39,6 +39,7 @@ const StyledBurger = styled.div`
     }
 
   }
+
 `;
 
 const Burger = () => {

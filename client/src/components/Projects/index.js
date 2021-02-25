@@ -38,7 +38,7 @@ const Projects = () => {
     <Grow in>
       <Container className={classes.container}>
         <div className={classes.header} >
-          <h4>Mes dernières réalisations</h4>
+          <h4 className={classes.title}>Mes dernières réalisations</h4>
           {user && (
             <div className={classes.divFormBtn} >
               <Button onClick={handleOpen} className={classes.formBtn} variant="contained">

@@ -13,4 +13,16 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: 'center',
   },
+
+  // Responsive
+  [theme.breakpoints.down('sm')]: {
+
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      //justifyContent: 'space-between',
+    },
+    
+  },
+
 }));

@@ -110,27 +110,79 @@ export default makeStyles((theme) => ({
 
   // Responsive
   [theme.breakpoints.down('sm')]: {
+
+    container: {
+      width: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+
     header: {
-      width: '100%',
+      width: 'auto',
       minHeight: '100vh',
-      backgroundImage: `url(${bgMobile})`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
+      backgroundImage: 'none',
     },
 
     description: {
-      padding: '15px',
+      //background: 'rgba(0, 0, 0, 0.4)',
+      marginTop: '2rem',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100vh',
+      paddingLeft: '0',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-end',
+      justifyContent: 'center',
+      alignItems: 'center',
       fontSize: '22px',
       color: '#ffffff',
     },
 
-    technos: {
-      fontSize: '20px',
+    title: {
+      color: '#5d6888',
     },
+
+    techLogo: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+
+    logo: {
+      margin: '1rem',
+    },
+
+    downButton: {
+      border: ' 1px solid #5d6888',
+      borderRadius: '5px',
+      background: '#5d6888',
+      color: '#ffffff',
+      "&:hover": {
+        border: ' 1px solid #5d6888',
+        background: '#5d6888',
+        color: '#ffffff',
+      }
+    },
+
+    main: {
+      background: '#ffffff',
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+    },
+
+    goTop: {
+      color: '#5d6888',
+      padding: '1rem',
+      
+    },
+
+
   },
   
   

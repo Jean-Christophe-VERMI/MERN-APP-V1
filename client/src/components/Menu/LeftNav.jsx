@@ -61,10 +61,11 @@ const Menu = styled.div`
     width: 100%;
     height: 100vh;
     padding-top: 5rem;
+    padding-left: 0rem;
     flex-flow: column nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #44bac4;
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
     top: 0;
@@ -72,7 +73,8 @@ const Menu = styled.div`
     transition: transform 0.3s ease-in-out;
 
     .nav {
-      width: 80%;
+      width: 100%;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -81,7 +83,8 @@ const Menu = styled.div`
 
     .menu {
       z-index: 10;
-      width: 80%;
+      width: 50%;
+      margin: .5rem;
       background-color: #ffffff;
       border-radius: 5px;
       font-size : 22px;

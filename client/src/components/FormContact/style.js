@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
 
   container: {
     width: '70%',
@@ -100,6 +100,69 @@ export default makeStyles(() => ({
 
   logo: {
     margin: ".5rem",
-  }
+  },
+
+  [theme.breakpoints.down('sm')]: {
+
+    container: {
+      width: '90%',
+      display: 'flex',
+      flexDirection: 'column-reverse',
+      justifyContent: 'center',
+      alignItems: 'center',
+      webkitBoxShadow: "none",
+      boxShadow: "none",
+    },
+
+    paper1: {
+      backgroundColor: '#cfcfd1',
+      height: '100%',
+      padding: '1rem',
+      borderRadius: '0px 0px 4px 4px',
+      width: '95%',
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+    },
+
+    email: {
+      width: '100%',
+    },
+
+    formActions: {
+      display:'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+    },
+
+    buttonSubmit: {
+      marginTop: '1rem',
+    },
+
+    paper2: {
+      backgroundColor: '#44bac4',
+      color: '#000000',
+      height: '100%',
+      width: '95%',
+      padding: '1rem',
+      borderRadius: '4px 4px 0px 0px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+
+    name: {
+      marginBottom: '.5rem',
+    },
+
+    middleInfos: {
+      margin: '1rem',
+      
+    },
+    
+  },
 
 }));
