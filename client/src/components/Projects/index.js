@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Container, Grow, Grid, Button} from '@material-ui/core';
+import { Container, Grow, Button} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 

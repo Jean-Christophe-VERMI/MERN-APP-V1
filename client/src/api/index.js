@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL : 'https://www.jcvdevpro.fr' });
+const API = axios.create({ baseURL : 'http://localhost:3000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -10,14 +10,23 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+//Posts
 export const fetchPosts = () => API.get('/posts');
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
 export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
+//Articles
+export const fetchArticles = () => API.post('/articles');
+export const createArticle = (url) => API.post('/article', url);
+export const deleteArticle = (id) => API.delete(`/article/${id}`);
+
+//Auth
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
 
-
+//Contact
 export const sendContactForm = (formData) => API.post('/contact', formData);
+
+

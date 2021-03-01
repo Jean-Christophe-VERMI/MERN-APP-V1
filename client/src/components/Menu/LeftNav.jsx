@@ -115,6 +115,7 @@ const LeftNav = ({ open, setOpen }) => {
     <Menu open={open}>
       <div className="nav">
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/'>Accueil</NavLink>
+        <NavLink className="menu" onClick={() => setOpen(!open)} to='/blog'>Blog</NavLink>
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/contact'>Contact</NavLink>
         {user && (
           <div>
