@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getArticles, createArticle } from '../../actions/articles.js';
 
 //Components
-import Article from '../Article';
+import Menu from '../Menu/Burger';
+import Articles from '../Articles';
 
 //Style
 import useStyles from './style';
@@ -16,8 +17,8 @@ const Blog = () => {
   const classes = useStyles();
   const [currentId, setCurrentId] = useState(null);
   const [url, setUrl] = useState('');
+  const user = JSON.parse(localStorage.getItem('profile'));
 
-  const articles = useSelector((state) => state.articles);
 
   useEffect(()=> {
     dispatch(getArticles());
@@ -26,32 +27,27 @@ const Blog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // fonction de requete au serveur pour aller scrapprer les metadatas à partir d'une url pour créer un nouvel article depuis le backend.
-    createArticle();
+    console.log(url);
+    dispatch(createArticle(url));
+    console.log('envoi url au serveur');
     setUrl('');
   };
 
   return (
     <div>
+      <Menu />
       <header className={classes.header}>
-        <h4>Articles suivi de veille technologique</h4>
-        <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-          <Typography variant="h6">{currentId ? 'Editer' : 'Créer' } un projet web</Typography>
-          <TextField name="url" variant="outlined" label="url" fullWidth value={url} onChange={(e) => seturl(e.target.value)} />
+        <h4 className={classes.title}>Articles suivi de veille technologique</h4>
+        {user && (
+          <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+          <TextField name="url" variant="outlined" label="url" fullWidth value={url} onChange={(e) => setUrl(e.target.value)} />
           <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Enregister</Button>
         </form>
+        )}
       </header>
       <main className={classes.main}>
         <div>
-          {!articles &&(
-            <CircularProgress />
-          )}
-          {articles &&(
-            <div className={classes.container}>
-              {articles.map((article) => (
-                <Article key={article._id} { ...article } setCurrentId={setCurrentId} />
-              ))}
-            </div>
-          )}
+          <Articles />
         </div>
       </main>
     </div>

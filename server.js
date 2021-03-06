@@ -7,6 +7,7 @@ import path from 'path';
 
 //Routes
 import postRoutes from './routes/posts.js';
+import articleRoutes from './routes/articles.js';
 import userRoutes from './routes/users.js';
 import contactRoute from './routes/contact.js';
 
@@ -33,6 +34,7 @@ mongoose.connect(db, {
 
   // Use Routes
   app.use('/posts', postRoutes);
+  app.use('/articles', articleRoutes);
   app.use('/user', userRoutes);
 
   // Serve static assets if in production

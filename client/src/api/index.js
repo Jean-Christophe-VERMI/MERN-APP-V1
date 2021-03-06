@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL : 'http://localhost:3000' });
+const API = axios.create({ baseURL : 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
@@ -19,8 +19,8 @@ export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 //Articles
 export const fetchArticles = () => API.post('/articles');
-export const createArticle = (url) => API.post('/article', url);
-export const deleteArticle = (id) => API.delete(`/article/${id}`);
+export const createArticle = (url) => API.post('/articles', url);
+export const deleteArticle = (id) => API.delete(`/articles/${id}`);
 
 //Auth
 export const signIn = (formData) => API.post('/user/signin', formData);
