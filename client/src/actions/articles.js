@@ -13,6 +13,7 @@ export const getArticles = () => async (dispatch) => {
 
 export const createArticle = (url) => async (dispatch) => {
   try {
+    console.log(url);
     const { data } = await api.createArticle(url);
     dispatch({type: CREATE_ARTICLE, payload: data});
 

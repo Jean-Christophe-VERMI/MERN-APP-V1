@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
+    flexDirection: 'column',
   },
 
   smMargin: {

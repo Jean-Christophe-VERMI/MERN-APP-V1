@@ -1,19 +1,24 @@
 import React from 'react';
 
+import Tag from '../../Tag';
+
 //Style
 import useStyles from './style';
 
-const Article = ({title, description, image}) => {
+const Article = ({title, url, tags}) => {
   const classes = useStyles();
   
   return (
     <div className={classes.article}>
-      <div className={classes.thumb}>
-        <img src={image} alt={title}></img>
-      </div>
       <div className={classes.metasDatas}>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <a href={url} target="_blank" title="Repository Git" className={classes.title}>
+          {title}
+        </a>
+      </div>
+      <div>
+      {tags.map((tag) => (
+        <Tag tags={tag} key={tag} />
+      ))}
       </div>
     </div>
   );

@@ -1,5 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cheerio from 'cheerio';
+import request from 'request';
+
 
 import Article from '../models/articles.js';
 
@@ -28,22 +31,35 @@ export const getArticle = async (req, res) => {
 }
 
 export const createArticle = async (req, res) => {
-  const articleUrl = req.body;
+  const article = req.body;
+  const url = article.url;
+  const tags = article.tags;
+  console.log(url);
+  console.log(tags);
+  
+  request(url, async (error, response, body) => {
+    if (!error && response.statusCode == 200) {
+      const $ = cheerio.load(body);
 
-  console.log(articleUrl);
-  return;
-  // 1) Faire une requette pour aller scrapper l'url et annalyser le document afin de récupérer les métaDatas souhaités.
-  // 2) Vérifier les métasDatas récupéré
-  // 3) Créer un nouvel article sur Mongo 
-  const newArticle = new Article({ ...article, author: req.userId, createdAt: new Date().toISOString() })
+      let titleScrap = $('h1').text();
+      console.log(titleScrap);
+      console.log('Scraping Done...');
 
-  try {
-      await newArticle.save();
+      const newArticle = new Article({ ...article, title: titleScrap, url: url, tags: tags, createdAt: new Date().toISOString() });
 
-      res.status(201).json(newArticle );
-  } catch (error) {
-      res.status(409).json({ message: error.message });
-  }
+      try {
+        await newArticle.save();
+  
+        res.status(201).json(newArticle );
+      } catch (error) {
+          res.status(409).json({ message: error.message });
+      }
+    }
+  });
+ 
+  
+
+  
 }
 
 export const deleteArticle = async (req, res) => {

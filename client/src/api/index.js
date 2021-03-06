@@ -18,8 +18,8 @@ export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updated
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 
 //Articles
-export const fetchArticles = () => API.post('/articles');
-export const createArticle = (url) => API.post('/articles', url);
+export const fetchArticles = () => API.get('/articles');
+export const createArticle = (articleData) => API.post('/articles', articleData);
 export const deleteArticle = (id) => API.delete(`/articles/${id}`);
 
 //Auth
