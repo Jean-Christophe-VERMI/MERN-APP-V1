@@ -34,31 +34,49 @@ export const createArticle = async (req, res) => {
   const article = req.body;
   const url = article.url;
   const tags = article.tags;
-  console.log(url);
-  console.log(tags);
+
+  const searchTerm = 'youtube';
+  const indexOfFirst = url.indexOf(searchTerm);
+  console.log(indexOfFirst);
   
-  request(url, async (error, response, body) => {
-    if (!error && response.statusCode == 200) {
-      const $ = cheerio.load(body);
 
-      let titleScrap = $('h1').text();
-      console.log(titleScrap);
-      console.log('Scraping Done...');
+  if (indexOfFirst === 12) {
 
-      const newArticle = new Article({ ...article, title: titleScrap, url: url, tags: tags, createdAt: new Date().toISOString() });
+    const newArticle = new Article({ ...article, youtubeUrl: url, tags: tags, createdAt: new Date().toISOString() });
 
-      try {
-        await newArticle.save();
-  
-        res.status(201).json(newArticle );
-      } catch (error) {
-          res.status(409).json({ message: error.message });
-      }
+    try {
+      await newArticle.save();
+
+      res.status(201).json(newArticle );
+    } catch (error) {
+        res.status(409).json({ message: error.message });
     }
-  });
- 
-  
 
+  } else {
+    request(url, async (error, response, body) => {
+      if (!error && response.statusCode == 200) {
+        const $ = cheerio.load(body);
+        
+        let titleScrap = $('h1').text();
+        let resumeScrap = $('p:first').text();
+        console.log(titleScrap);
+        console.log(resumeScrap);
+        
+        console.log('Scraping Done...');
+  
+        const newArticle = new Article({ ...article, title: titleScrap, resume: resumeScrap, url: url, tags: tags, createdAt: new Date().toISOString() });
+  
+        try {
+          await newArticle.save();
+    
+          res.status(201).json(newArticle );
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+      }
+    });
+
+  }
   
 }
 

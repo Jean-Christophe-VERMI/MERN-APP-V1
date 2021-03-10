@@ -6,22 +6,40 @@ export default makeStyles((theme) => ({
     width: '80%',
     display: 'flex',
     margin: '1rem auto',
-    padding: '2rem 1rem',
+    padding: '2rem',
     justifyContent: 'space-between',
-    border: '1px solid #4c96d7',
     borderRadius: '5px',
-    backgroundColor: '#e2e2e2',
+    backgroundColor: '#ffffff',
     webkitBoxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
     boxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
   },
 
-  thumb: {
-    height: '150px',
-    backgroundBlendMode: 'darken',
+  metasDatas: {
+    width: '70%',
   },
 
-  metaDatas: {
-    border: 'solid',
+  title: {
+    textDecoration: 'none',
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    marginBottom: '1rem',
+  },
+
+  resume: {
+    marginTop: '1rem',
+  },
+
+
+  infos: {
+    width: '30%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+  },
+
+  date: {
+    marginBottom: '1rem',
   },
 
 

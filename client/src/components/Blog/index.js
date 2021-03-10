@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, CircularProgress} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { TextField, Button} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
 //Actions
 import { getArticles, createArticle } from '../../actions/articles.js';
@@ -34,19 +34,19 @@ const Blog = () => {
   };
 
   return (
-    <div>
+    <div className={classes.body}>
       <Menu />
-      <header className={classes.header}>
-        <h4 className={classes.title}>Articles suivi de veille technologique</h4>
-        {user && (
-          <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-          <TextField name="url" variant="outlined" label="url" fullWidth value={articleData.url} onChange={(e) => setArticleData({ ...articleData, url: e.target.value})} />
-          <TextField name="tags" variant="outlined" label="Tags" fullWidth value={articleData.tags} onChange={(e) => setArticleData({ ...articleData, tags: e.target.value})} />
-          <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Enregister</Button>
-        </form>
-        )}
-      </header>
       <main className={classes.main}>
+        <h4 className={classes.title}>Suivi de veille technologique</h4>
+        {user && (
+          <div className={classes.urlForm}>
+            <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+              <TextField className={classes.input} name="url" variant="outlined" label="url" fullWidth value={articleData.url} onChange={(e) => setArticleData({ ...articleData, url: e.target.value})} />
+              <TextField className={classes.input} name="tags" variant="outlined" label="Tags" fullWidth value={articleData.tags} onChange={(e) => setArticleData({ ...articleData, tags: e.target.value})} />
+              <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Enregister</Button>
+            </form>
+          </div>
+        )}
         <div>
           <Articles setCurrentId={currentId} />
         </div>

@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 const articleSchema = mongoose.Schema({
   title: String,
   url: String,
+  youtubeUrl: String,
   tags: [String],
-  urlImg: String,
+  resume: String,
   createdAt: {
     type: Date,
     default: new Date()
