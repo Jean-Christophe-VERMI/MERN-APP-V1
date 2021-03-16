@@ -14,7 +14,7 @@ import contactRoute from './routes/contact.js';
 const app = express();
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
-const corsOrigins = ['https://jcvdevpro.fr/posts', 'https://jcvdevpro.fr/articles'];
+const corsOrigins = ['https://jcvdevpro.fr', 'https://jcvdevpro.fr/posts', 'https://jcvdevpro.fr/articles'];
 
 app.use(cors({origin: corsOrigins}));
 app.use(bodyParser.json({limit: "30mb", extended: true}));
