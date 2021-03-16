@@ -14,7 +14,7 @@ import contactRoute from './routes/contact.js';
 const app = express();
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
-app.use(cors("*"));
+//app.use(cors("*"));
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use('/', contactRoute);
@@ -33,8 +33,8 @@ mongoose.connect(db, {
   .catch((error) => console.log(error.message));
 
   // Use Routes
-  app.use('/posts', postRoutes);
-  app.use('/articles', articleRoutes);
+  app.use('/posts', cors(), postRoutes);
+  app.use('/articles', cors(), articleRoutes);
   app.use('/user', userRoutes);
 
   // Serve static assets if in production
