@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL : 'https://jcvdevpro.fr' });
+const API = axios.create({ baseURL : 'https://www.jcvdevpro.fr' });
+
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
