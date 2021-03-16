@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL : 'https://deploymern2021.herokuapp.com' });
+const API = axios.create({ baseURL : 'https://jcvdevpro.fr' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
