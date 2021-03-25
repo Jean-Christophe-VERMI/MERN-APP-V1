@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select'
 
 //Actions
 import { getArticles, createArticle } from '../../actions/articles.js';
@@ -16,6 +20,7 @@ const Blog = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [currentId, setCurrentId] = useState(null);
+  const [order, setOrder] = useState('');
   const [articleData, setArticleData] = useState({ url:'', tags: ''});
   const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -31,11 +36,33 @@ const Blog = () => {
     setArticleData({url:'', tags: ''});
   };
 
+  const handleChange = (event) => {
+    setOrder(event.target.value);
+  };
+
   return (
     <div className={classes.body}>
       <Menu />
       <main className={classes.main}>
-        <h4 className={classes.title}>Suivi de veille technologique</h4>
+        <div className={classes.order}>
+          <div>
+            <h4 className={classes.title}>Suivi de veille technologique</h4>
+          </div>
+          <div className={classes.select}>
+            <FormControl className={classes.formControl}>
+              <InputLabel id="demo-simple-select-label">Ordre</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={order}
+                onChange={handleChange}
+              >
+                <MenuItem value={'Ascendant'}>Ascendant</MenuItem>
+                <MenuItem value={'Descendant'}>Descendant</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+        </div>
         {user && (
           <div className={classes.urlForm}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -46,7 +73,7 @@ const Blog = () => {
           </div>
         )}
         <div>
-          <Articles setCurrentId={currentId} />
+          <Articles setCurrentId={currentId} order={order}/>
         </div>
       </main>
     </div>

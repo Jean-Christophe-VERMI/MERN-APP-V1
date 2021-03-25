@@ -6,8 +6,8 @@ export default makeStyles((theme) => ({
     width: '80%',
     display: 'flex',
     margin: '1rem auto',
-    padding: '2rem',
     justifyContent: 'space-between',
+    alignItems: 'center',
     borderRadius: '5px',
     backgroundColor: '#ffffff',
     webkitBoxShadow: "0px 12px 30px -10px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
@@ -15,7 +15,12 @@ export default makeStyles((theme) => ({
   },
 
   metasDatas: {
-    width: '70%',
+    width: '60%',
+    padding: '2rem',
+  },
+
+  youtubePlayer: {
+    maxWidth: '90%',
   },
 
   title: {
@@ -27,11 +32,15 @@ export default makeStyles((theme) => ({
 
   resume: {
     marginTop: '1rem',
+    paddingRight: '2rem',
   },
 
 
   infos: {
-    width: '30%',
+    width: '25%',
+    padding: '1rem',
+    borderRadius: '4px 0px 0px 4px',
+    backgroundColor: '#5d6888',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -40,6 +49,7 @@ export default makeStyles((theme) => ({
 
   date: {
     marginBottom: '1rem',
+    color: '#ffffff',
   },
 
 

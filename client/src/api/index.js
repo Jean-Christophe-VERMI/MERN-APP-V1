@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL : 'https://www.jcvdevpro.fr' });
 
-
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
     req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
@@ -29,5 +28,3 @@ export const signUp = (formData) => API.post('/user/signup', formData);
 
 //Contact
 export const sendContactForm = (formData) => API.post('/contact', formData);
-
-

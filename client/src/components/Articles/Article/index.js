@@ -24,6 +24,7 @@ const Article = ({title, resume, url, youtubeUrl, tags, createdAt}) => {
         </div>
         {youtubeUrl &&(
           <ReactPlayer
+            className={classes.youtubePlayer}
             url={youtubeUrl}
           />
         )}
