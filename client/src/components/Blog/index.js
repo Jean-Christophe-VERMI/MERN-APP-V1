@@ -27,9 +27,7 @@ const Blog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // fonction de requete au serveur pour aller scrapprer les metadatas à partir d'une url pour créer un nouvel article depuis le backend.
-    console.log(articleData);
     dispatch(createArticle(articleData));
-    console.log('envoi url au serveur');
     setArticleData({url:'', tags: ''});
   };
 

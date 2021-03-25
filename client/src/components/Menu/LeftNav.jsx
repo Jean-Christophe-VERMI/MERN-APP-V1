@@ -48,6 +48,10 @@ const Menu = styled.div`
 
   }
 
+  .auth{
+    color: #ffffff;
+  }
+
   .logout {
     cursor: pointer;
   }
@@ -89,6 +93,10 @@ const Menu = styled.div`
       border-radius: 5px;
       font-size : 22px;
     }
+
+    .auth{
+      display: none;
+    }
     
   }
   
@@ -117,6 +125,7 @@ const LeftNav = ({ open, setOpen }) => {
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/'>Accueil</NavLink>
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/blog'>Blog</NavLink>
         <NavLink className="menu" onClick={() => setOpen(!open)} to='/contact'>Contact</NavLink>
+        <NavLink className="auth" onClick={() => setOpen(!open)} to='/admin/jcvauth'>Auth</NavLink>
         {user && (
           <div>
             <ExitToAppIcon className='logout' onClick={handleLogout}/>
